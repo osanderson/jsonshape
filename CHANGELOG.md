@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.2](https://github.com/osanderson/jsonshape/compare/v1.0.1...v1.0.2) (2025-07-31)
+
+
+### Bug Fixes
+
+* test ([7a8e6e2](https://github.com/osanderson/jsonshape/commit/7a8e6e28a9618f8de637ab4dc9541f5e840fad6a))
+
 ## [1.0.1](https://github.com/osanderson/jsonshape/compare/v1.0.0...v1.0.1) (2025-07-31)
 
 
