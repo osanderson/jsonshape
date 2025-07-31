@@ -48,19 +48,16 @@ func sanitizeString(s string, opts Options) string {
 
 	var result strings.Builder
 
+	const runeWhitelist = "-: "
+
 	for _, r := range s {
 		switch {
-			// TODO - re-assess the hardcoded whitelist (e.g. '-',':',' ')
 		case unicode.IsLetter(r):
 			result.WriteRune('A')
 		case unicode.IsDigit(r):
 			result.WriteRune('9')
-		case r == '-':
-			result.WriteRune('-')
-		case r == ':':
-			result.WriteRune(':')
-		case unicode.IsSpace(r):
-			result.WriteRune(' ')
+		case strings.ContainsRune(runeWhitelist, r):
+			result.WriteRune(r)
 		default:
 			result.WriteRune('?')
 		}
