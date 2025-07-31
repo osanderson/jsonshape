@@ -1,6 +1,7 @@
 package jsonshape
 
 import (
+	"fmt"
 	"math"
 	"strconv"
 	"strings"
@@ -12,30 +13,38 @@ type Options struct {
 }
 
 // TODO - json parser orders the keys.. need to use custom parsing if we want to preserve original key order
-func Sanitize(value interface{}, opts Options) interface{} {
+func Sanitize(value interface{}, opts Options) (interface{}, error) {
+	var err error
+
 	switch v := value.(type) {
 	case map[string]interface{}:
 		out := make(map[string]interface{}, len(v))
 		for k, val := range v {
-			out[k] = Sanitize(val, opts)
+			out[k], err = Sanitize(val, opts)
+			if err != nil {
+				return nil, fmt.Errorf("Sanitize error: %w", err)
+			}
 		}
-		return out
+		return out, nil
 	case []interface{}:
 		out := make([]interface{}, len(v))
 		for i, item := range v {
-			out[i] = Sanitize(item, opts)
+			out[i], err = Sanitize(item, opts)
+			if err != nil {
+				return nil, fmt.Errorf("Sanitize error: %w", err)
+			}
 		}
-		return out
+		return out, nil
 	case string:
-		return sanitizeString(v, opts)
+		return sanitizeString(v, opts), nil
 	case float64:
 		return sanitizeNumber(v)
 	case bool:
-		return false
+		return false, nil
 	case nil:
-		return nil
+		return nil, nil
 	default:
-		return nil
+		return nil, nil
 	}
 }
 
@@ -66,7 +75,9 @@ func sanitizeString(s string, opts Options) string {
 	return result.String()
 }
 
-func sanitizeNumber(n float64) float64 {
+func sanitizeNumber(n float64) (float64, error) {
+	var err error
+
 	isNegative := n < 0
 	abs := math.Abs(n)
 	str := strconv.FormatFloat(abs, 'f', -1, 64)
@@ -86,8 +97,10 @@ func sanitizeNumber(n float64) float64 {
 		}
 	}
 
-	out, _ := strconv.ParseFloat(result.String(), 64)
-	// TODO - error check?
+	out, err := strconv.ParseFloat(result.String(), 64)
+	if err != nil {
+		return 0, fmt.Errorf("ParseFloat error: %w", err)
+	}
 
-	return out
+	return out, nil
 }

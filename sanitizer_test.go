@@ -35,7 +35,10 @@ func TestSanitize_PreservesShape(t *testing.T) {
 		Matchers: DefaultMatchers,
 	}
 
-	sanitized := Sanitize(data, opts)
+	sanitized, err := Sanitize(data, opts)
+	if err != nil {
+		t.Fatalf("Sanitize error: %s", err)
+	}
 
 	jsonOut, err := json.Marshal(sanitized)
 	if err != nil {
