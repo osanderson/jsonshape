@@ -104,5 +104,3 @@ func sanitizeNumber(n float64) (float64, error) {
 
 	return out, nil
 }
-
-// TODO
