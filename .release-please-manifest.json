@@ -1,3 +1,4 @@
 {
+    "release-type": "go",
     "version-file": "version.go"
 }
