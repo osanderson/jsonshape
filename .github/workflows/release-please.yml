@@ -16,7 +16,3 @@ jobs:
     steps:
       - name: Release Please
         uses: googleapis/release-please-action@v4
-        with:
-          release-type: go
-          extra-files: |
-            version.go
