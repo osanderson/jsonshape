@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.1.1](https://github.com/osanderson/jsonshape/compare/v1.1.0...v1.1.1) (2025-08-02)
+
+
+### Bug Fixes
+
+* release-please config ([28cb46c](https://github.com/osanderson/jsonshape/commit/28cb46cd3d4c1c1642593e8620b579d8a304d184))
+* release-please config ([72b0c87](https://github.com/osanderson/jsonshape/commit/72b0c87b77236845e83f23e7d5521785e6a62a9d))
+* release-please tweaks ([09759dc](https://github.com/osanderson/jsonshape/commit/09759dc90956d970404eeb2ee7af034551568c2c))
+* release-please tweaks ([b066933](https://github.com/osanderson/jsonshape/commit/b06693314836aed465890583c1931dcfb836b0db))
+* release-please tweaks ([47e8a53](https://github.com/osanderson/jsonshape/commit/47e8a53f3fa0b2225b653b9f286bb429db863db7))
+* release-please tweaks ([f6428bb](https://github.com/osanderson/jsonshape/commit/f6428bbb19d1d406d1b8117ca41849ea8053ff13))
+
 ## [1.1.0](https://github.com/osanderson/jsonshape/compare/v1.0.2...v1.1.0) (2025-08-01)
 
 
